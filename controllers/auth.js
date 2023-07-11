@@ -3,7 +3,6 @@ const {db} = require("../config/firebase");
 
 
 const signUp = async (req, res) => {
-  console.log(req.body);
   try {
     const { email, password, fullName } = req.body;
     const user = doc(db, 'users', email);
@@ -20,7 +19,6 @@ const signUp = async (req, res) => {
 
 const signIn = async (req, res) => {
   try {
-    console.log(req.body);
     const { email, password } = req.body;
     const userRef = doc(db, "users", email)
     const user = (await getDoc(userRef)).data()

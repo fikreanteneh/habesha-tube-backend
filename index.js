@@ -26,12 +26,5 @@ app.use("/songs", songsRouter);
 
 //! Start Express server
 const PORT = process.env.PORT || 3000;
-try {
-  app.listen(PORT, () => {
-    console.log("--------------------------");
-    console.log(`| listening on port ${PORT} |`);
-    console.log("--------------------------");
-  });
-} catch (error) {
-  console.log("there is a error is starting the server");
-}
+
+app.listen(PORT, () => {})
