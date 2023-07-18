@@ -23,7 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/auth", authRouter);
 app.use("/songs", songsRouter);
 
-
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong!");
+});
 //! Start Express server
 const PORT = process.env.PORT || 3000;
 

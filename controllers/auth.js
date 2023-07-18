@@ -7,10 +7,10 @@ const signUp = async (req, res) => {
     const { email, password, fullName } = req.body;
     const user = doc(db, 'users', email);
     if ((await getDoc(user)).data()) {
-      res.status(400).json({ error: "User already exists" });
+      return res.status(400).json({ error: "User already exists" });
     }
     await setDoc(user,req.body);
-    return res.status(200).json({ message: "User created successfully" });
+    return res.status(200).json({ email: email, fullName: fullName});
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
